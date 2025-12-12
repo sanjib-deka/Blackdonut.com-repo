@@ -1,0 +1,243 @@
+@import './theme.css';
+
+/* Layout container */
+.profile-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Header: single consolidated block */
+.profile-header {
+  position: relative;
+  overflow: visible;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+
+  display: flex;
+  flex-direction: row;        /* desktop: horizontal layout */
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* place the small join control inside the top-right corner of the header square */
+.profile-left-action {
+  position: absolute;
+  top: 20px;
+  right: 20px;        /* ← This positions it on the RIGHT */
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 20;
+  pointer-events: auto;
+  transform: translateY(-4px); /* subtle upward nudge */
+}
+
+/* off-white premium label placed to the left of the join button */
+.join-note {
+  color: var(--color-offwhite, #f5f4f2); /* premium off-white */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 0.88rem;
+  margin: 0;
+  white-space: nowrap;
+  opacity: 0.95;
+}
+
+/* small, minimalist dark-blue button */
+.join-button {
+  background: #032c6a; /* dark blue */
+  color: #ffffff;
+  padding: 0.28rem 0.5rem;
+  border-radius: 8px;
+  border: 0;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 10px rgba(7, 33, 86, 0.12);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.join-button:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(7,33,86,0.16); }
+.join-button:active { transform: scale(0.98); box-shadow: 0 3px 8px rgba(7,33,86,0.10); }
+
+/* profile-meta: avatar + content column, ensure top alignment so name & address start at same left */
+.profile-meta {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-4);
+  min-width: 0;
+  margin-top: 0;
+}
+
+/* avatar */
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--color-surface-alt);
+  border: 2px solid var(--color-border);
+}
+
+/* profile-info: plain block so text lines up */
+.profile-info {
+  display: block;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  align-self: start;
+}
+
+/* remove boxes — only text remains */
+.profile-pill {
+  display: block;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--color-text);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* business name: highlighted text only */
+.profile-business {
+  font-size: clamp(1rem, 2.2vw, 1.12rem);
+  font-weight: 700;
+  color: var(--color-brand, #1e6aff); /* text-only highlight */
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.03);
+}
+
+/* address: plain text, wraps inside same column */
+.profile-address {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  display: block;
+  width: 100%;
+  margin: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.25;
+  opacity: 0.95;
+}
+
+/* Stats */
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+  border-top: 1px dashed var(--color-border);
+  padding-top: var(--space-6);
+}
+
+.profile-stat {
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-items: center;
+  gap: var(--space-2);
+}
+
+.profile-stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  text-transform: lowercase;
+}
+
+.profile-stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Separator line under header */
+.profile-sep {
+  display: none;
+}
+
+/* Grid of videos */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.profile-grid-item {
+  border: none;
+  aspect-ratio: 3 / 4;
+}
+
+.profile-grid-video {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: 1.5rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .profile-meta { grid-template-columns: 96px 1fr; }
+  .profile-avatar { width: 96px; height: 96px; }
+}
+
+@media (max-width: 680px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-6);
+  }
+
+  .profile-left-action {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    transform: translateY(-2px);
+  }
+
+  .profile-meta {
+    width: 100%;
+    grid-template-columns: 72px 1fr;
+    gap: var(--space-3);
+    margin-top: 6px;
+  }
+
+  .profile-avatar { width: 72px; height: 72px; }
+  .profile-business { font-size: 1rem; }
+  .profile-address { font-size: 0.84rem; }
+}
+
+@media (max-width: 420px) {
+  .profile-left-action { top: 6px; right: 8px; gap: 0.35rem; }
+  .profile-meta { grid-template-columns: 64px 1fr; }
+  .profile-avatar { width: 64px; height: 64px; }
+  .profile-business { font-size: 0.98rem; }
+  .profile-address { font-size: 0.82rem; }
+}

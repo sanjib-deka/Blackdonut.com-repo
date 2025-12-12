@@ -1,0 +1,11 @@
+/* Desktop-only decorative image helper */
+.desktop-only-donut {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktop-only-donut {
+    display: block;
+    pointer-events: none;
+  }
+}

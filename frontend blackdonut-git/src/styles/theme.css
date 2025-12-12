@@ -1,0 +1,87 @@
+/* 🎨 Modern Dark Instagram-Style Theme */
+:root {
+  /* 🌞 Light Mode (Minimal, Clean) */
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f5f5f5;
+  --color-border: #e5e7eb;
+  --color-text: #111827;
+  --color-text-secondary: #6b7280;
+  --color-accent: #0095f6; /* Instagram blue */
+  --color-accent-hover: #1877f2; /* richer blue */
+  --color-danger: #ed4956; /* Instagram red */
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  --font-stack: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  --transition-base: 160ms cubic-bezier(.4, 0, .2, 1);
+}
+
+/* 🌚 Dark Mode (Instagram-like vibe) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #000000; /* pure black backdrop */
+    --color-surface: #121212; /* video area / cards */
+    --color-surface-alt: #1a1a1a; /* slightly lighter surface */
+    --color-border: #262626; /* subtle dividers */
+    --color-text: #ffffff;
+    --color-text-secondary: #a8a8a8;
+    --color-accent: #0095f6; /* Instagram blue */
+    --color-accent-hover: #1e9eff;
+    --color-danger: #ed4956; /* Instagram red */
+
+    --shadow-sm: 0 1px 3px rgba(255, 255, 255, 0.06);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Base styling */
+body {
+  font-family: var(--font-stack);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover, a:focus-visible {
+  color: var(--color-accent-hover);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* Optional glowing effect for icons in dark mode */
+@media (prefers-color-scheme: dark) {
+  .reel-action svg {
+    filter: drop-shadow(0 0 3px rgba(0,149,246,0.4)); /* soft Instagram-blue glow */
+  }
+
+  .reel-action:hover svg {
+    filter: drop-shadow(0 0 6px rgba(0,149,246,0.7));
+  }
+}

@@ -1,0 +1,150 @@
+.custom-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  max-width: 400px;
+  background: #1a1a1a;
+  border: 1px solid rgba(192, 191, 184, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(192, 191, 184, 0.1);
+  z-index: 10000;
+  animation: slideInRight 0.4s ease-out;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+.custom-alert.custom-alert-error {
+  border-top: 3px solid #ef4444;
+}
+
+.custom-alert.custom-alert-success {
+  border-top: 3px solid #10b981;
+}
+
+.custom-alert.custom-alert-warning {
+  border-top: 3px solid #f59e0b;
+}
+
+.custom-alert.custom-alert-info {
+  border-top: 3px solid #3b82f6;
+}
+
+.alert-content {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.alert-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.alert-message {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alert-title {
+  color: #c0bfb8;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.alert-text {
+  color: #a8a8a8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.alert-close {
+  background: none;
+  border: none;
+  color: #c0bfb8;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  margin: -8px -8px 0 0;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.alert-close:hover {
+  color: #fff;
+}
+
+.alert-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 0 0 12px 12px;
+  animation: progressBar 4s linear forwards;
+}
+
+.custom-alert.custom-alert-error .alert-progress {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+.custom-alert.custom-alert-success .alert-progress {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.custom-alert.custom-alert-warning .alert-progress {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+@keyframes progressBar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .custom-alert {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+
+  .alert-title {
+    font-size: 13px;
+  }
+
+  .alert-text {
+    font-size: 12px;
+  }
+}

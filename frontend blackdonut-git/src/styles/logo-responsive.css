@@ -1,0 +1,6 @@
+/* Hide logo on mobile devices */
+@media (max-width: 768px) {
+  .desktop-logo {
+    display: none !important;
+  }
+}
