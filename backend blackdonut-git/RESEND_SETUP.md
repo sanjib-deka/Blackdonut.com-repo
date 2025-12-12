@@ -15,7 +15,7 @@ The backend code is ready to use Resend. You just need to add the API key to Ren
 
    **Variable 1:**
    - **Key:** `RESEND_API_KEY`
-   - **Value:** `re_Vy4sFo7h_Gh3vMDM6zpKVWGfquhNc1dc5`
+   - **Value:** `api key of resend`
 
    **Variable 2:**
    - **Key:** `RESEND_FROM_EMAIL`
@@ -59,4 +59,5 @@ For production, you can:
 ## ✅ That's It!
 
 Once you add the environment variables to Render, email will work automatically!
+
 
