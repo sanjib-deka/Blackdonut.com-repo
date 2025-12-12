@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "Black Donut Comment System API",
+    "description": "Complete API testing collection for comment functionality on food reels",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Comments - User Operations",
+      "item": [
+        {
+          "name": "1. Add Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"foodId\": \"{{foodId}}\",\n  \"text\": \"This food looks amazing! 🤤\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/comments",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "comments"]
+            }
+          }
+        },
+        {
+          "name": "2. Get All Comments for Food",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/comments/food/{{foodId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "comments", "food", "{{foodId}}"]
+            }
+          }
+        },
+        {
+          "name": "3. Delete Own Comment",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/comments/{{commentId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "comments", "{{commentId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Comments - Food Partner Operations",
+      "item": [
+        {
+          "name": "1. Get Engagement Stats",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/comments/engagement/{{foodId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "comments", "engagement", "{{foodId}}"]
+            }
+          }
+        },
+        {
+          "name": "2. Pin/Unpin Comment",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/comments/engagement/{{commentId}}/pin",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "comments", "engagement", "{{commentId}}", "pin"]
+            }
+          }
+        },
+        {
+          "name": "3. Reply to Comment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Thank you! DM us for orders 😊\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/comments/engagement/{{commentId}}/reply",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "comments", "engagement", "{{commentId}}", "reply"]
+            }
+          }
+        },
+        {
+          "name": "4. Delete Any Comment (as Owner)",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/comments/engagement/{{commentId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "comments", "engagement", "{{commentId}}"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "foodId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "commentId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
